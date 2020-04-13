@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class MovementSC : MonoBehaviour
 {
@@ -7,8 +8,19 @@ public class MovementSC : MonoBehaviour
     public float jumpSpeed = 8.0F;
     public float gravity = 20.0F;
     private Vector3 moveDirection = Vector3.zero;
+
+    GameObject DisplayPlayer;
+
+    void Start()
+    {
+        DisplayPlayer = GameObject.FindGameObjectWithTag("displayplayertag");
+       
+    }
+
     void Update()
     {
+        
+        
         CharacterController controller = GetComponent<CharacterController>();
         if (controller.isGrounded)
         {
@@ -18,8 +30,16 @@ public class MovementSC : MonoBehaviour
             if (Input.GetButton("Jump"))
                 moveDirection.y = jumpSpeed;
 
+
         }
         moveDirection.y -= gravity * Time.deltaTime;
         controller.Move(moveDirection * Time.deltaTime);
+    }
+
+    public void Metodomover()
+    {
+        DisplayPlayer = DisplayPlayer + "";
+        
+        return;
     }
 }
