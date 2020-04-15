@@ -22,12 +22,12 @@ public class CameraMovSC : MonoBehaviour
     void CameraControl()
     {
         MouseX += Input.GetAxis("Mouse X") * RotationSpeed;
-        //MouseY -= Input.GetAxis("Mouse Y") * RotationSpeed;
-        //MouseY = Mathf.Clamp(MouseY, -35, 60);
+        MouseY -= Input.GetAxis("Mouse Y") * RotationSpeed;
+        MouseY = Mathf.Clamp(MouseY, -15, 30);
 
         transform.LookAt(Target);
 
-        Target.rotation = Quaternion.Euler(0, MouseX,0);
+        Target.rotation = Quaternion.Euler(MouseY, MouseX,0);
         Player.rotation = Quaternion.Euler(0, MouseX, 0);
     }
 }
